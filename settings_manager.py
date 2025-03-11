@@ -47,7 +47,8 @@ class SettingsManager:
         """ Runs .bat file to initialize environment variables """
         bat_file = os.path.join(os.path.dirname(__file__), "api/init.bat")
         try:
-            subprocess.run(bat_file, check=True, shell=True)
+            subprocess.run(["cmd.exe", "/c", bat_file], check=True)
+            # subprocess.run(bat_file, check=True, shell=True)
             print("[✔️] .bat file executed successfully.")
         except Exception as e:
             print(f"[❌] Error running {bat_file}: {e}")

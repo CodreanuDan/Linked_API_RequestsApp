@@ -1,16 +1,16 @@
 {
-    "name": "Sibiu, Rom\u00e2nia",
-    "latitude": "45.7973912",
-    "longitude": "24.1519202",
+    "name": "Tecuci, Gala\u021bi, Rom\u00e2nia",
+    "latitude": "45.8457816",
+    "longitude": "27.4290798",
     "type": "administrative",
     "country_code": "ro",
     "postcode": "N/A",
     "bounding_box": [
-        "45.6338743",
-        "45.8570932",
-        "23.9219067",
-        "24.2445941"
+        "45.7851188",
+        "45.8935623",
+        "27.3412685",
+        "27.4910430"
     ],
-    "osm_id": 9846497,
-    "population": "147245"
+    "osm_id": 10715516,
+    "population": "46825"
 }

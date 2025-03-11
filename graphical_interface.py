@@ -408,8 +408,8 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
             if os.path.exists(self.__open_ai_data):
                 os.remove(self.__open_ai_data)
                 print(f"[🗑️][graphical_interface.py/Streamlit_GUI/__exit_button] --> File {self.__open_ai_data} deleted before loading new data.")
-            st.stop()
             os._exit(0)
+            st.stop()
 
     def __get_location_and_person(self, file) -> tuple[str, str]:
         """

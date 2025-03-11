@@ -12,6 +12,7 @@ import os
 import subprocess
 import signal
 from graphical_interface import Streamlit_GUI as gui
+from settings_manager import SettingsManager as config
 
 #***********************************************************************
 # CONTENT: Program
@@ -45,6 +46,8 @@ class Program(gui):
                 :return: None.
         """
         if not os.path.exists(self.lock_file_path):
+            # check api dependendencies
+            config.run_bat()
             # Create lock file to signal that the app already started
             open(self.lock_file_path, 'w').close()
             try:
