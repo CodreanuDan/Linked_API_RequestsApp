@@ -1,0 +1,39 @@
+.trip-info-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2b5876, #4e4376);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.trip-info-container:hover {
+    transform: scale(1.03);
+}
+
+.trip-info-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ffcc00;
+    text-transform: uppercase;
+}
+
+.trip-info-content {
+    font-size: 18px;
+    text-align: center;
+}
+
+.trip-info-content span {
+    font-weight: bold;
+    color: #ffcc00;
+    transition: color 0.3s ease-in-out;
+}
+
+.trip-info-content span:hover {
+    color: #ffffff;
+}

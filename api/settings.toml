@@ -1,0 +1,14 @@
+[api.pexels]
+primary = "https://api.pexels.com/v1/search"
+
+[api.openstreetmap]
+primary = "https://nominatim.openstreetmap.org/search"
+
+[api.open-meteo]
+primary = "https://api.open-meteo.com/v1/forecast"
+
+[api.openrouteservice]
+primary = "https://api.openrouteservice.org/v2/directions/driving-car"
+
+[api.location-ip]
+primary = "https://ipinfo.io/json"

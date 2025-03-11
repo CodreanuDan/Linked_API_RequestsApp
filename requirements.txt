@@ -1,0 +1,21 @@
+# mandatory for streamlit and openmeteo
+pandas 
+numpy
+# for graphical interface
+streamlit 
+# for meteo forecast
+openmeteo_requests
+# for funtion retry decorator
+tenacity 
+# for settings manager
+dataclasses 
+# for tourist info
+google-generativeai
+# for various api`s
+requests
+requests_cache
+retry_requests 
+# aux
+datetime 
+# env data
+dotenv

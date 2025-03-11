@@ -1,0 +1,115 @@
+/* Importing the Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.location-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5); /* Fallback dacă imaginea nu se încarcă */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    margin: 30px auto;
+    max-width: 700px;
+    width: 80%;
+    overflow: hidden;
+    border-left: 5px solid #1e90ff;
+    transition: all 0.3s ease;
+    float: left; /* Poziționează box-ul pe partea stângă */
+    margin-left: 20px; /* Adaugă o distanță față de marginea stângă a paginii */
+}
+
+/* Overlay semi-transparent pentru contrast */
+.location-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Reduce luminozitatea imaginii */
+    border-radius: 10px;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.location-section:hover::before {
+    background: rgba(0, 0, 0, 0.6); /* Întunecare mai puternică pe hover */
+}
+
+/* Container pentru text */
+.location-content {
+    position: relative;
+    z-index: 2; /* Se asigură că textul e peste overlay */
+    color: white; /* Text alb pentru contrast */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); /* Umbră pentru evidențierea textului */
+}
+
+.location-title {
+    font-size: 26px;
+    font-weight: 700; /* Bold letters */
+    color: #1e90ff;
+    margin-bottom: 12px;
+    text-transform: uppercase; /* Capitalize for a stronger look */
+    letter-spacing: 2px; /* Add space between letters */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.location-title:hover {
+    color: #ff6347; /* Change title color on hover */
+    cursor: pointer;
+}
+
+.location-info,
+.location-description {
+    font-size: 16px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5); /* Fundal negru semi-transparent pentru claritate */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.location-description ul {
+    padding-left: 20px;
+}
+
+.location-description li {
+    margin-bottom: 7px;
+    font-weight: 500; /* Slightly bolded list items */
+    line-height: 1.5; /* Increased line spacing for better readability */
+}
+
+/* Hover Effect for List Items */
+.location-description li:hover {
+    color: #1e90ff; /* Change text color on hover */
+    cursor: pointer;
+    transform: scale(1.05); /* Slightly scale up on hover */
+    transition: all 0.2s ease;
+}
+
+/* Optional: Add a nice animated effect for the section appearing */
+.location-section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsivitate pentru ecrane mai mici */
+@media (max-width: 768px) {
+    .location-section {
+        width: 100%; /* Lărgirea box-ului pe ecrane mici */
+        margin-left: 0; /* Eliminarea marginilor laterale */
+    }
+}

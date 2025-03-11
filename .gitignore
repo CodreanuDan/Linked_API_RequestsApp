@@ -1,0 +1,5 @@
+__pycache__/
+myenv
+.cache.sqlite
+file_template.txt
+api/env_data.env

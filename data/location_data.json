@@ -1,0 +1,16 @@
+{
+    "name": "Sibiu, Rom\u00e2nia",
+    "latitude": "45.7973912",
+    "longitude": "24.1519202",
+    "type": "administrative",
+    "country_code": "ro",
+    "postcode": "N/A",
+    "bounding_box": [
+        "45.6338743",
+        "45.8570932",
+        "23.9219067",
+        "24.2445941"
+    ],
+    "osm_id": 9846497,
+    "population": "147245"
+}
