@@ -17,6 +17,8 @@ from api_handlers import IpLocationApiHdl as ip_location
 from api_handlers import OpenRouteServiceApiHdl as open_route
 from tenacity import retry, stop_after_attempt
 import streamlit as st
+import folium
+from streamlit_folium import folium_static
 import pandas as pd
 import json
 import os
@@ -333,6 +335,8 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
         #**********************************************************
         self.__run_gui()
 
+    #*********************************************
+    """ GUI LAYOUT """
     def __run_gui(self):
         """
             Graphical interface handler
@@ -363,9 +367,15 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
         # Get the user's IP location
         self.__get_trip_data()
         #*********************************************************************************************
+        # Map
+        self.__mark_location_on_map()
+        #*********************************************************************************************
         # Exit button 
         self.__exit_button(self.__exit_button_css_path)
-          
+    
+    #*********************************************
+    """ GUI ELEMENTS  """
+    # TRIP DATA
     def __get_trip_data(self):
         """ Get the trip route (using the start location from get_route.json and destination from location_data.json) """
         self.__ip_location = self.get_location_from_ip()
@@ -397,6 +407,7 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
             print("[❌][graphical_interface.py/Streamlit_GUI/__get_trip_data] --> Could not retrieve IP location.")
             st.error("Could not retrieve IP location.")
 
+    # EXIT BUTTON
     def __exit_button(self, file):
         """
             Closes application
@@ -411,6 +422,7 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
             os._exit(0)
             st.stop()
 
+    # GEMINI PROMPT
     def __get_location_and_person(self, file) -> tuple[str, str]:
         """
             Handles search bar, extracts location and person type
@@ -441,6 +453,55 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
 
         return "", ""
 
+        #*********************************************
+    
+    # MAP INFO 
+    def __mark_location_on_map(self):
+        """ Uses map features from folium map to display current location and the destination on a map """
+        
+        # Coordinates: latitude and longitude for bith start and destination
+        self.__destination = os.path.join(os.path.dirname(__file__), "data/location_data.json")
+        self.__start = os.path.join(os.path.dirname(__file__), "data/get_route.json")
+        
+        # Load the start location data from get_route.json (user's current location)
+        with open(self.__start, 'r', encoding="utf-8") as file:
+            start_data = json.load(file)
+        start_coords = (float(start_data["latitude"]), float(start_data["longitude"]))  # User's current location (IP location)
+        print(f"Start coordinates: {start_coords}")
+        
+        # Load the destination location data from location_data.json
+        with open(self.__destination, 'r') as file:
+            destination_data = json.load(file)
+        end_coords = (float(destination_data["latitude"]), float(destination_data["longitude"]))  # Destination from location_data.json
+        print(f"End coordinates: {end_coords}")
+        
+        # Create the map with the current location in the centre
+        current_lat = start_coords[0]
+        current_lon = start_coords[1]
+        m = folium.Map(location=[current_lat, current_lon], zoom_start=10)
+        
+        # Mark current location
+        folium.Marker(
+            [current_lat, current_lon],
+            tooltip="Locația Curentă",
+            icon=folium.Icon(color="blue"),
+        ).add_to(m)
+
+        # Mark destination
+        search_lat = end_coords[0]
+        search_lon = end_coords[1]
+        if search_lat and search_lon:
+            folium.Marker(
+                [search_lat, search_lon],
+                tooltip="Locația Căutată",
+                icon=folium.Icon(color="red"),
+            ).add_to(m)
+        
+        # Render map on streamlit
+        folium_static(m) 
+        
+    #*********************************************
+    """ AUX FUNCTIONS  """
     def __save_person_type_to_json(self, person_type: str):
         """
             Save the person type to a JSON file

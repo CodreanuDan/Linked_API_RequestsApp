@@ -1,6 +1,6 @@
 .trip-info-container {
     max-width: 400px;
-    margin: 20px auto;
+    margin: 20px auto 20px 0; /* Fix: Aliniere la stânga */
     padding: 15px;
     border-radius: 12px;
     background: linear-gradient(135deg, #2b5876, #4e4376);

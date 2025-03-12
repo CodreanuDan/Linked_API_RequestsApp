@@ -19,3 +19,6 @@ retry_requests
 datetime 
 # env data
 dotenv
+# for info map
+folium
+streamlit_folium
