@@ -1,8 +1,23 @@
+#***********************************************************************
+# MODULE: settings_manager
+# SCOPE:  Manages API settings, environment variables, and script execution
+# REV: 1.0
+#
+# Created by: Codreanu Dan
+
+#***********************************************************************
+
+#***********************************************************************
+# IMPORTS:
 import os
 import subprocess
 from dotenv import load_dotenv
 import tomllib
 
+
+#***********************************************************************
+# CONTENT: SettingsManager
+# INFO: Manages API settings, environment variables, and script execution  
 class SettingsManager:
     """ Manages API settings, environment variables, and script execution """
 
