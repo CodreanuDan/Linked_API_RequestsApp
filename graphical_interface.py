@@ -292,7 +292,7 @@ class Streamlit_GUI_HandleGeminiAI():
         
             
 #***********************************************************************
-# CONTENT: Streamlit_GUI_HandleOpenStreetMap
+# CONTENT: Streamlit_GUI
 # INFO: Class for project GUI, made with Streamlit, main GUI Handler
 class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
                     Streamlit_GUI_HandleOpenStreetMap,
