@@ -591,7 +591,7 @@ class IpLocationApiHdl():
 if __name__ == "__main__":
     # # latitude = 52.52
     # # longitude = 13.41
-    # forecast_hours = 168  # You can set this to the desired number of hours
+    # forecast_hours = 168  
     
     # # Instantiate the OpenMeteoHdl class and fetch weather data
     location_handler = OpenStreetMapHdl("Brasov,Romania")
