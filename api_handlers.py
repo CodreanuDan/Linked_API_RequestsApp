@@ -521,6 +521,12 @@ class OpenRouteServiceApiHdl():
             # Extract distance and duration from the response
             duration = data['features'][0]['properties']['segments'][0]['duration'] / 60  # Duration in minutes
             distance = data['features'][0]['properties']['segments'][0]['distance'] / 1000  # Distance in km
+            route_geometry = data['features'][0]['geometry']['coordinates']
+            
+            # Save route to JSON
+            route_path = os.path.join(os.path.dirname(__file__), "data/route_data.json")
+            with open(route_path, 'w', encoding="utf-8") as file:
+                json.dump(route_geometry, file, indent=4)
             
             # Print the trip details
             print(f"Trip duration: {duration:.2f} minutes")
@@ -578,6 +584,7 @@ class IpLocationApiHdl():
         except requests.exceptions.RequestException as e:
             print(f"[❌][api_handlers.py/IpLocationApiHdl/get_location] --> Error getting IP location: {e}")
             return None, None
+
 
 #***********************************************************************
 # DBG_AREA:

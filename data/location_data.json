@@ -1,16 +1,16 @@
 {
-    "name": "Tecuci, Gala\u021bi, Rom\u00e2nia",
-    "latitude": "45.8457816",
-    "longitude": "27.4290798",
+    "name": "Timi\u0219oara, Timi\u0219, Rom\u00e2nia",
+    "latitude": "45.7538355",
+    "longitude": "21.2257474",
     "type": "administrative",
     "country_code": "ro",
     "postcode": "N/A",
     "bounding_box": [
-        "45.7851188",
-        "45.8935623",
-        "27.3412685",
-        "27.4910430"
+        "45.6838246",
+        "45.8341735",
+        "21.1116821",
+        "21.3272446"
     ],
-    "osm_id": 10715516,
-    "population": "46825"
+    "osm_id": 6927733,
+    "population": "319279"
 }

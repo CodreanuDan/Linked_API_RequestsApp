@@ -462,6 +462,7 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
         # Coordinates: latitude and longitude for bith start and destination
         self.__destination = os.path.join(os.path.dirname(__file__), "data/location_data.json")
         self.__start = os.path.join(os.path.dirname(__file__), "data/get_route.json")
+        self.__route_path = os.path.join(os.path.dirname(__file__), "data/route_data.json")
         
         # Load the start location data from get_route.json (user's current location)
         with open(self.__start, 'r', encoding="utf-8") as file:
@@ -475,15 +476,20 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
         end_coords = (float(destination_data["latitude"]), float(destination_data["longitude"]))  # Destination from location_data.json
         print(f"End coordinates: {end_coords}")
         
+        # Load route data
+        with open(self.__route_path, 'r', encoding="utf-8") as file:
+            route_geometry = json.load(file)
+            
         # Create the map with the current location in the centre
         current_lat = start_coords[0]
         current_lon = start_coords[1]
         m = folium.Map(location=[current_lat, current_lon], zoom_start=10)
         
+        
         # Mark current location
         folium.Marker(
             [current_lat, current_lon],
-            tooltip="Locația Curentă",
+            tooltip="Current Location",
             icon=folium.Icon(color="blue"),
         ).add_to(m)
 
@@ -493,9 +499,17 @@ class Streamlit_GUI(Streamlit_GUI_HandleOpenMeteoData,
         if search_lat and search_lon:
             folium.Marker(
                 [search_lat, search_lon],
-                tooltip="Locația Căutată",
+                tooltip="Destination",
                 icon=folium.Icon(color="red"),
             ).add_to(m)
+            
+        # Draw route
+        folium.PolyLine(
+            [(point[1], point[0]) for point in route_geometry],  # (lat, lon) order
+            color="green",
+            weight=5,
+            opacity=0.8
+        ).add_to(m)
         
         # Render map on streamlit
         folium_static(m) 
