@@ -23,18 +23,9 @@ The app is built in **Python** using **Streamlit** for the UI, with **HTML & CSS
 ### Lower Part  
 ![Lower Part](https://github.com/user-attachments/assets/2ab4f359-eb4b-4d71-a09d-ae51bdf0f69c)
 
-## Installation & Usage
-### Prerequisites
-- Python 3.x
-- Streamlit
-- Required APIs (Google Maps, Wikipedia, OpenWeather, OpenRouteService, Gemini AI)
 
-### Setup
-```sh
-git clone https://github.com/yourrepo/tourist-api-app.git
-cd tourist-api-app
-pip install -r requirements.txt
-streamlit run app.py
+### Prerequisites - Required APIs (open-meteo, openstreetmap, Gemini AI, pexels, openrouteservice, ipinfo)
+
 
 
 
